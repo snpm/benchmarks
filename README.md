@@ -95,8 +95,7 @@ This suite also tests the performance of basic script execution (ex. `npm run fo
   
   - 1.3 Install package managers and corepack:
     ```bash
-    npm install -g npm@latest corepack@latest vlt@latest bun@latest deno@latest nx@latest turbo@latest
-    cargo install --path ../snpm-cli
+    npm install -g npm@latest corepack@latest vlt@latest bun@latest deno@latest nx@latest turbo@latest snpm@latest
     ```
   
   - 1.4 Make a new `results` folder:

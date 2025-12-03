@@ -5,7 +5,6 @@ set -e
 
 # Resolve repository paths
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
 # Environment Configuration
 COREPACK_ENABLE_STRICT=0
@@ -46,8 +45,8 @@ echo "hyperfine: $HYPERFINE_VERSION"
 # Install Node.js package managers and tools
 echo "Installing package managers and tools..."
 npm install -g npm@latest corepack@latest vlt@latest bun@latest deno@latest nx@latest turbo@latest
-echo "Installing snpm from local workspace..."
-cargo install --path "$REPO_ROOT/snpm-cli" --force
+echo "Installing snpm globally via npm..."
+npm install -g snpm@latest
 
 # Configure Package Managers
 echo "Configuring package managers..."
