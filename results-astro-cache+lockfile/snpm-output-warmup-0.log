@@ -1,0 +1,4 @@
+[2msnpm install v0.1.0[0m
+
+[2mResolving dependencies[0m
+[31merror[0m Unable to resolve zod-to-ts@^4.9.4 || ^5.0.2: missing peer dependency typescript
