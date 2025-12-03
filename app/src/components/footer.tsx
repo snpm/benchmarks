@@ -95,7 +95,7 @@ export const Footer = ({ lastUpdated }: { lastUpdated?: string }) => {
                     <li>
                       •{" "}
                       <a
-                        href="https://github.com/vltpkg/benchmarks"
+                        href="https://github.com/snpm/benchmarks"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-primary hover:underline"

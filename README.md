@@ -158,7 +158,7 @@ The generated charts show:
 
 Results are automatically deployed to GitHub Pages when running on the main branch:
 
-<https://vltpkg.github.io/benchmarks/>
+<https://snpm.github.io/benchmarks/>
 
 Each run creates a new dated html file with its results, making it easy to track performance over time.
 
@@ -173,7 +173,7 @@ Each run creates a new dated html file with its results, making it easy to track
 ## Local debugging
 
 You can debug the result process scripts and the web app locally by using data
-from previous [GitHub Action runs of the Package Manager Benchmarks workflow](https://github.com/vltpkg/benchmarks/actions/workflows/benchmark.yaml).
+from previous [GitHub Action runs of the Package Manager Benchmarks workflow](https://github.com/snpm/benchmarks/actions/workflows/benchmark.yaml).
 
 Those can be individually downloaded and their `benchmarks.json` files renamed
 to a `results/<date>/<fixture>-<variation>.json` file, where `<date>` needs to

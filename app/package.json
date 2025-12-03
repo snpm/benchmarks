@@ -1,5 +1,5 @@
 {
-  "name": "vltpkg-benchmarks",
+  "name": "snpm-benchmarks",
   "private": true,
   "version": "0.0.0",
   "type": "module",
