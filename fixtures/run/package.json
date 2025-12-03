@@ -1,0 +1,14 @@
+{
+  "name": "run",
+  "version": "1.0.0",
+  "private": false,
+  "scripts": {
+    "test": "echo \"benchmarking script execution...\""
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "nx": "20.3.1",
+    "turbo": "^2.3.3"
+  },
+  "nx": {}
+}
