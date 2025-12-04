@@ -4,6 +4,9 @@
     "minCount": 332,
     "maxCount": 336
   },
+  "snpm": {
+    "count": 618
+  },
   "yarn": {
     "count": 333
   },

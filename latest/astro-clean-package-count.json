@@ -2,6 +2,9 @@
   "npm": {
     "count": 296
   },
+  "snpm": {
+    "count": 545
+  },
   "yarn": {
     "count": 298
   },

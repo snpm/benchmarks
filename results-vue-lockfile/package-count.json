@@ -4,6 +4,9 @@
     "minCount": 463,
     "maxCount": 464
   },
+  "snpm": {
+    "count": 792
+  },
   "yarn": {
     "count": 459
   },
@@ -14,7 +17,7 @@
     "count": 437
   },
   "vlt": {
-    "count": 441
+    "count": 442
   },
   "bun": {
     "count": 461
