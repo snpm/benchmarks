@@ -2,9 +2,9 @@
 
 [2mResolving dependencies[0m
 [33mwarn[0m peer dependency issues detected (non‑fatal): Unable to resolve zod-to-ts@^4.9.4 || ^5.0.2: missing peer dependency typescript
-Resolved, downloaded and extracted [36m[292][0m
+Resolved, downloaded and extracted [36m[291][0m
 [2mSaved lockfile[0m
 
 [32m+[0m astro@5.16.4
 
-292 packages installed [2m[1.23s][0m [2m(237 packages/s)[0m
+291 packages installed [2m[1.67s][0m [2m(175 packages/s)[0m
