@@ -15,7 +15,7 @@ Resolved, downloaded and extracted [36m[448][0m
 [32m+[0m @vue/eslint-config-typescript[2m@14.6.0[0m
 [32m+[0m @vue/test-utils[2m@2.4.6[0m
 [32m+[0m @vue/tsconfig[2m@0.7.0[0m
-[32m+[0m eslint[2m@9.39.1[0m
+[32m+[0m eslint[2m@9.39.2[0m
 [32m+[0m eslint-plugin-playwright[2m@2.4.0[0m
 [32m+[0m eslint-plugin-vue[2m@9.33.0[0m
 [32m+[0m jsdom[2m@25.0.1[0m
@@ -27,7 +27,7 @@ Resolved, downloaded and extracted [36m[448][0m
 [32m+[0m vite-plugin-vue-devtools[2m@7.7.9[0m
 [32m+[0m vitest[2m@2.1.9[0m
 [32m+[0m vue[2m@3.5.25[0m
-[32m+[0m vue-router[2m@4.6.3[0m
+[32m+[0m vue-router[2m@4.6.4[0m
 [32m+[0m vue-tsc[2m@2.2.12[0m
 
-[36m448[0m packages installed [2m[523ms][0m [2m(856 packages/s)[0m
+[36m448[0m packages installed [2m[561ms][0m [2m(798 packages/s)[0m
