@@ -4,7 +4,7 @@
 Resolved, downloaded and extracted [36m[356][0m
 [2mSaved lockfile[0m
 
-[32m+[0m @types/node[2m@20.19.26[0m
+[32m+[0m @types/node[2m@20.19.27[0m
 [32m+[0m @types/react[2m@18.3.27[0m
 [32m+[0m @types/react-dom[2m@18.3.7[0m
 [32m+[0m eslint[2m@8.57.1[0m
@@ -16,4 +16,4 @@ Resolved, downloaded and extracted [36m[356][0m
 [32m+[0m tailwindcss[2m@3.4.19[0m
 [32m+[0m typescript[2m@5.9.3[0m
 
-[36m356[0m packages installed [2m[546ms][0m [2m(652 packages/s)[0m
+[36m356[0m packages installed [2m[544ms][0m [2m(654 packages/s)[0m
