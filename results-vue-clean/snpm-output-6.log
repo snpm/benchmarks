@@ -1,7 +1,7 @@
 [2msnpm install v0.1.0[0m
 
 [2mResolving dependencies[0m
-Resolved, downloaded and extracted [36m[448][0m
+Resolved, downloaded and extracted [36m[444][0m
 [2mSaved lockfile[0m
 
 [32m+[0m @playwright/test[2m@1.57.0[0m
@@ -30,4 +30,4 @@ Resolved, downloaded and extracted [36m[448][0m
 [32m+[0m vue-router[2m@4.6.4[0m
 [32m+[0m vue-tsc[2m@2.2.12[0m
 
-[36m448[0m packages installed [2m[471ms][0m [2m(951 packages/s)[0m
+[36m444[0m packages installed [2m[530ms][0m [2m(838 packages/s)[0m
