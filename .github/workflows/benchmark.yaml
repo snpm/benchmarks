@@ -212,6 +212,9 @@ jobs:
             }
 
             console.log('Benchmark cleaning completed');
+      - name: Verify snpm results exist
+        run: |
+          node scripts/verify-snpm-results.js
       - name: Process Results
         run: |
           bash ./scripts/process-results.sh
