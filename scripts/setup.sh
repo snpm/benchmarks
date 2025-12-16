@@ -11,6 +11,9 @@ COREPACK_ENABLE_STRICT=0
 COREPACK_ENABLE_AUTO_PIN=0
 YARN_ENABLE_IMMUTABLE_INSTALLS=false
 
+# Tool versions
+HYPERFINE_REQUIRED_VERSION="1.19.0"
+
 # Check Node version (support 24.x and 25.x to match current runners)
 SUPPORTED_NODE_VERSIONS=("24" "25")
 CURRENT_NODE_VERSION=$(node -v | cut -d'v' -f2)
@@ -28,13 +31,46 @@ if [[ "$NODE_SUPPORTED" == "false" ]]; then
     exit 1
 fi
 
-# Install system dependencies
-echo "Installing system dependencies..."
-sudo apt-get update && sudo apt-get install -y jq
+echo "Checking system dependencies..."
+NEEDS_APT_UPDATE=false
 
-# Install Hyperfine
-wget https://github.com/sharkdp/hyperfine/releases/download/v1.19.0/hyperfine_1.19.0_amd64.deb
-sudo dpkg -i hyperfine_1.19.0_amd64.deb
+# Install jq if it is missing
+if command -v jq >/dev/null 2>&1; then
+    echo "jq already installed"
+else
+    NEEDS_APT_UPDATE=true
+fi
+
+# Install Hyperfine if it is missing or the version is too old
+INSTALL_HYPERFINE=false
+if command -v hyperfine >/dev/null 2>&1; then
+    CURRENT_HYPERFINE_VERSION=$(hyperfine --version | awk '{print $2}')
+    if dpkg --compare-versions "$CURRENT_HYPERFINE_VERSION" "lt" "$HYPERFINE_REQUIRED_VERSION"; then
+        echo "Hyperfine version $CURRENT_HYPERFINE_VERSION detected, upgrading to $HYPERFINE_REQUIRED_VERSION"
+        INSTALL_HYPERFINE=true
+    else
+        echo "Hyperfine already installed (version $CURRENT_HYPERFINE_VERSION)"
+    fi
+else
+    INSTALL_HYPERFINE=true
+    NEEDS_APT_UPDATE=true
+fi
+
+if [ "$NEEDS_APT_UPDATE" = true ]; then
+    sudo apt-get update
+fi
+
+if ! command -v jq >/dev/null 2>&1; then
+    echo "Installing jq..."
+    sudo apt-get install -y jq
+fi
+
+if [ "$INSTALL_HYPERFINE" = true ]; then
+    echo "Installing Hyperfine..."
+    wget "https://github.com/sharkdp/hyperfine/releases/download/v${HYPERFINE_REQUIRED_VERSION}/hyperfine_${HYPERFINE_REQUIRED_VERSION}_amd64.deb"
+    sudo dpkg -i "hyperfine_${HYPERFINE_REQUIRED_VERSION}_amd64.deb"
+    rm -f "hyperfine_${HYPERFINE_REQUIRED_VERSION}_amd64.deb"
+fi
 
 echo "Required system dependencies installed successfully!"
 JQ_VERSION=$(jq --version)

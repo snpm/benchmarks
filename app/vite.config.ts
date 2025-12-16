@@ -3,8 +3,13 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 
+const base = (() => {
+  const value = process.env.BENCHMARKS_BASE_URL || "/";
+  return value.endsWith("/") ? value : `${value}/`;
+})();
+
 export default defineConfig({
-  base: "/",
+  base,
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
@@ -13,5 +18,6 @@ export default defineConfig({
   },
   build: {
     outDir: "../results/",
+    emptyOutDir: false,
   },
 });

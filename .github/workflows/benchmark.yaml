@@ -219,6 +219,8 @@ jobs:
         run: |
           npm install -g vlt@latest
       - name: Build Charts View
+        env:
+          BENCHMARKS_BASE_URL: "/${{ github.event.repository.name }}/"
         run: |
           pushd app
           vlt install || true
@@ -250,4 +252,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: results
           keep_files: true
-

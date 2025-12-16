@@ -1,4 +1,4 @@
-export const CHART_DATA_URL = `/latest/chart-data.json`;
+export const CHART_DATA_URL = `${import.meta.env.BASE_URL}latest/chart-data.json`;
 
 export const CHART_DEFAULTS = {
   HEIGHT: 300,

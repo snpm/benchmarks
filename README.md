@@ -159,6 +159,11 @@ Results are automatically deployed to GitHub Pages when running on the main bran
 
 <https://snpm.github.io/benchmarks/>
 
+The static app looks for `latest/chart-data.json` next to the published files and
+respects the `BENCHMARKS_BASE_URL` environment variable (set to `/<repo>/` in CI)
+so assets resolve correctly on the GitHub Pages project site. When testing
+locally you can omit the variable to default to `/`.
+
 Each run creates a new dated html file with its results, making it easy to track performance over time.
 
 ## Contributing
