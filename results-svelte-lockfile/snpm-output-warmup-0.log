@@ -1,4 +1,4 @@
-[2msnpm install v0.1.0[0m
+[2msnpm install v2025.12.17[0m
 
 [2mResolving dependencies[0m
 Resolved, downloaded and extracted [36m[55][0m
@@ -14,4 +14,4 @@ Resolved, downloaded and extracted [36m[55][0m
 [32m+[0m typescript[2m@5.9.3[0m
 [32m+[0m vite[2m@6.4.1[0m
 
-[36m55[0m packages installed [2m[572ms][0m [2m(96 packages/s)[0m
+[36m55[0m packages installed [2m[387ms][0m [2m(142 packages/s)[0m

@@ -1,4 +1,4 @@
-[2msnpm install v0.1.0[0m
+[2msnpm install v2025.12.17[0m
 
 [2mResolving dependencies[0m
 Resolved, downloaded and extracted [36m[444][0m
@@ -30,4 +30,4 @@ Resolved, downloaded and extracted [36m[444][0m
 [32m+[0m vue-router[2m@4.6.4[0m
 [32m+[0m vue-tsc[2m@2.2.12[0m
 
-[36m444[0m packages installed [2m[2.34s][0m [2m(190 packages/s)[0m
+[36m444[0m packages installed [2m[2.19s][0m [2m(202 packages/s)[0m

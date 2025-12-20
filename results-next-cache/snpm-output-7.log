@@ -1,4 +1,4 @@
-[2msnpm install v0.1.0[0m
+[2msnpm install v2025.12.17[0m
 
 [2mResolving dependencies[0m
 Resolved, downloaded and extracted [36m[348][0m
@@ -16,4 +16,4 @@ Resolved, downloaded and extracted [36m[348][0m
 [32m+[0m tailwindcss[2m@3.4.19[0m
 [32m+[0m typescript[2m@5.9.3[0m
 
-[36m348[0m packages installed [2m[568ms][0m [2m(612 packages/s)[0m
+[36m348[0m packages installed [2m[589ms][0m [2m(591 packages/s)[0m

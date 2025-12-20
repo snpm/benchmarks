@@ -1,4 +1,4 @@
-[2msnpm install v0.1.0[0m
+[2msnpm install v2025.12.17[0m
 
 [2mResolving dependencies[0m
 [31merror[0m Unable to resolve fsevents@^1.2.7: package is not compatible with current OS/CPU
