@@ -10,8 +10,8 @@ Resolved, downloaded and extracted [36m[55][0m
 [32m+[0m @sveltejs/kit[2m@2.49.2[0m
 [32m+[0m @sveltejs/vite-plugin-svelte[2m@5.1.1[0m
 [32m+[0m svelte[2m@5.46.0[0m
-[32m+[0m svelte-check[2m@4.3.4[0m
+[32m+[0m svelte-check[2m@4.3.5[0m
 [32m+[0m typescript[2m@5.9.3[0m
 [32m+[0m vite[2m@6.4.1[0m
 
-[36m55[0m packages installed [2m[79ms][0m [2m(697 packages/s)[0m
+[36m55[0m packages installed [2m[79ms][0m [2m(693 packages/s)[0m
