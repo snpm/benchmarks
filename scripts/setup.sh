@@ -106,7 +106,10 @@ DENO_VERSION="$(npm view deno@latest version)"
 NX_VERSION="$(npm view nx@latest version)"
 TURBO_VERSION="$(npm view turbo@latest version)"
 NODE_VERSION=$(node -v)
-SNPM_VERSION="$(snpm --version)"
+SNPM_VERSION_RAW="$(snpm --version)"
+SNPM_VERSION="${SNPM_VERSION_RAW#vsnpm }"
+SNPM_VERSION="${SNPM_VERSION#snpm }"
+SNPM_VERSION="${SNPM_VERSION#v}"
 
 # Output versions
 echo "npm: $NPM_VERSION"
