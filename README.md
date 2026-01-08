@@ -113,6 +113,11 @@ This suite also tests the performance of basic script execution (ex. `npm run fo
   bash ./scripts/benchmark.sh next clean
   ```
 
+By default the suite runs 10 iterations with 2 warmups locally. In CI
+(`CI=true` or `GITHUB_ACTIONS=true`), the defaults drop to 5 iterations and 1
+warmup to keep job times reasonable. Override with `BENCH_RUNS` and
+`BENCH_WARMUP` when needed.
+
 ### GitHub Actions
 
 The benchmarks run automatically on:

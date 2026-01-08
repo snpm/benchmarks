@@ -32,8 +32,13 @@ fi
 
 # Defines configurable values for the benchmark
 BENCH_INCLUDE="${BENCH_INCLUDE:=npm,snpm,yarn,berry,pnpm,vlt,bun,deno,nx,turbo,node}"
-BENCH_WARMUP="${BENCH_WARMUP:=2}"
-BENCH_RUNS="${BENCH_RUNS:=10}"
+if [ -n "${CI:-}" ] || [ -n "${GITHUB_ACTIONS:-}" ]; then
+  BENCH_WARMUP="${BENCH_WARMUP:=1}"
+  BENCH_RUNS="${BENCH_RUNS:=5}"
+else
+  BENCH_WARMUP="${BENCH_WARMUP:=2}"
+  BENCH_RUNS="${BENCH_RUNS:=10}"
+fi
 for pm in npm snpm yarn berry pnpm vlt bun deno nx turbo node; do
   CHOICE=$(echo "$pm" | tr '[:lower:]' '[:upper:]')
   if echo "$BENCH_INCLUDE" | grep -qw "$pm"; then
