@@ -1,6 +1,6 @@
 # Package Manager Benchmarks
 
-This repo contains a suite of fixtures & tools to track the performance of package managers. We benchmark various Node.js package managers (npm, yarn, pnpm, berry, deno, bun, vlt, nx, turbo) across different project types and scenarios.
+This repo contains a suite of fixtures & tools to track the performance of package managers. We benchmark various Node.js package managers (npm, snpm, yarn, pnpm, berry, deno, bun, vlt, nx, turbo) across different project types and scenarios.
 
 ## Environment
 
