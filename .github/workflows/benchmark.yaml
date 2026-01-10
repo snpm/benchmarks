@@ -14,10 +14,10 @@ on:
         default: '"npm,snpm,yarn,berry,pnpm,vlt,bun,deno,nx,turbo,node"'
       warmup:
         description: 'The number of warmup runs on each benchmark'
-        default: '2'
+        default: '1'
       runs:
         description: 'The number of runs on each benchmark'
-        default: '10'
+        default: '5'
   schedule:
     - cron: "0 0 * * *"
 
