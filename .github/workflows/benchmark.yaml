@@ -40,8 +40,8 @@ jobs:
             fixture: "run"
     env:
       BENCH_INCLUDE: ${{ fromJson(inputs.binaries || '"npm,snpm,yarn,berry,pnpm,vlt,bun,deno,nx,turbo,node"') }}
-      BENCH_WARMUP: ${{ inputs.warmup || '2' }}
-      BENCH_RUNS: ${{ inputs.runs || '10' }}
+      BENCH_WARMUP: ${{ inputs.warmup || '1' }}
+      BENCH_RUNS: ${{ inputs.runs || '5' }}
     steps:
       - uses: actions/checkout@v4
       - name: Install Node
