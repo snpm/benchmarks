@@ -82,6 +82,18 @@ clean_deno_cache() {
   fi
 }
 
+# Function to safely clean zpm (Yarn 6) cache
+clean_zpm_cache() {
+  echo "Cleaning zpm cache..."
+  # zpm stores its cache in ~/.yarn/zpm by default
+  safe_remove "$HOME/.yarn/zpm"
+  # Also clean any local yarn cache
+  safe_remove ".yarn/cache"
+  safe_remove ".yarn/unplugged"
+  safe_remove ".pnp.cjs"
+  safe_remove ".pnp.loader.mjs"
+}
+
 # Function to clean lockfiles for all package managers
 clean_lockfiles() {
   echo "Cleaning lockfiles..."
@@ -127,6 +139,7 @@ clean_all_cache() {
   clean_bun_cache
   clean_nx_cache
   clean_deno_cache
+  clean_zpm_cache
 }
 
 clean_build_files() {
@@ -167,6 +180,7 @@ show_help() {
   echo "  clean_bun_cache"
   echo "  clean_nx_cache"
   echo "  clean_deno_cache"
+  echo "  clean_zpm_cache"
   echo "  clean_lockfiles"
   echo "  clean_package_manager_field"
   echo "  clean_package_manager_files"
@@ -212,6 +226,9 @@ else
         ;;
       clean_deno_cache)
         clean_deno_cache
+        ;;
+      clean_zpm_cache)
+        clean_zpm_cache
         ;;
       clean_lockfiles)
         clean_lockfiles

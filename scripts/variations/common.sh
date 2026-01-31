@@ -31,18 +31,25 @@ else
 fi
 
 # Defines configurable values for the benchmark
-BENCH_INCLUDE="${BENCH_INCLUDE:=npm,snpm,yarn,berry,pnpm,vlt,bun,deno,nx,turbo,node}"
+BENCH_INCLUDE="${BENCH_INCLUDE:=npm,snpm,yarn,berry,pnpm,vlt,bun,deno,zpm,nx,turbo,node}"
 BENCH_WARMUP="${BENCH_WARMUP:=1}"
 BENCH_RUNS="${BENCH_RUNS:=5}"
-for pm in npm snpm yarn berry pnpm vlt bun deno nx turbo node; do
+for pm in npm snpm yarn berry pnpm vlt bun deno zpm nx turbo node; do
   CHOICE=$(echo "$pm" | tr '[:lower:]' '[:upper:]')
   if echo "$BENCH_INCLUDE" | grep -qw "$pm"; then
     # Only allow nx, turbo, node if BENCH_VARIATION is "run"
+    # Exclude zpm from "run" variation (zpm is install-only for now)
     if [[ "$pm" == "nx" || "$pm" == "turbo" || "$pm" == "node" ]]; then
       if [ "$BENCH_VARIATION" = "run" ]; then
         eval "BENCH_INCLUDE_${CHOICE}=1"
       else
         eval "BENCH_INCLUDE_${CHOICE}="
+      fi
+    elif [[ "$pm" == "zpm" ]]; then
+      if [ "$BENCH_VARIATION" = "run" ]; then
+        eval "BENCH_INCLUDE_${CHOICE}="
+      else
+        eval "BENCH_INCLUDE_${CHOICE}=1"
       fi
     else
       eval "BENCH_INCLUDE_${CHOICE}=1"
@@ -66,6 +73,13 @@ BENCH_COMMAND_PNPM="corepack pnpm@latest install --silent > $BENCH_OUTPUT_FOLDER
 BENCH_COMMAND_VLT="vlt install --view=silent > $BENCH_OUTPUT_FOLDER/vlt-output-\${HYPERFINE_ITERATION}.log 2>&1"
 BENCH_COMMAND_BUN="bun install --silent > $BENCH_OUTPUT_FOLDER/bun-output-\${HYPERFINE_ITERATION}.log 2>&1"
 BENCH_COMMAND_DENO="deno install --allow-scripts --quiet > $BENCH_OUTPUT_FOLDER/deno-output-\${HYPERFINE_ITERATION}.log 2>&1"
+# zpm (Yarn 6) requires a .yarnrc.yml with nodeLinker set to node-modules for fair comparison
+BENCH_COMMAND_ZPM_PRE=$(cat <<EOF
+nodeLinker: node-modules
+enableImmutableInstalls: false
+EOF
+)
+BENCH_COMMAND_ZPM="echo \"$BENCH_COMMAND_ZPM_PRE\" > .yarnrc.yml; zpm install --silent > $BENCH_OUTPUT_FOLDER/zpm-output-\${HYPERFINE_ITERATION}.log 2>&1"
 
 # Clean up & create the results directory
 rm -rf "$BENCH_OUTPUT_FOLDER"
@@ -76,7 +90,7 @@ collect_package_count() {
   ls -la "$BENCH_OUTPUT_FOLDER"
 
   # Prints the output of each install
-  for pm in npm snpm yarn berry pnpm vlt bun deno nx turbo node; do
+  for pm in npm snpm yarn berry pnpm vlt bun deno zpm nx turbo node; do
     if echo "$BENCH_INCLUDE" | grep -qw "$pm"; then
       for i in {0..9}; do
         echo "-- Reading output of $pm install $i ---"

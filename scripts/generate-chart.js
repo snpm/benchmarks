@@ -29,6 +29,7 @@ const COLORS = {
   deno: "#70ffaf",
   bun: "#f472b6",
   vlt: "#000000",
+  zpm: "#2563eb",
   nx: "#3b82f6",
   turbo: "#ff1e56",
   node: "#84ba64",

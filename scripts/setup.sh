@@ -84,6 +84,15 @@ npm install -g npm@latest corepack@latest vlt@latest bun@latest deno@latest nx@l
 echo "Installing snpm globally via npm..."
 npm install -g snpm@latest
 
+# Install zpm (Yarn 6 - experimental Rust rewrite)
+echo "Installing zpm (Yarn 6)..."
+ZPM_INSTALL_DIR="$HOME/.zpm"
+mkdir -p "$ZPM_INSTALL_DIR"
+npm pack @yarnpkg/yarn-x86_64-unknown-linux-musl --pack-destination "$ZPM_INSTALL_DIR"
+tar -xzf "$ZPM_INSTALL_DIR"/*.tgz -C "$ZPM_INSTALL_DIR" --strip-components=1
+chmod +x "$ZPM_INSTALL_DIR/yarn"
+ln -sf "$ZPM_INSTALL_DIR/yarn" /usr/local/bin/zpm || sudo ln -sf "$ZPM_INSTALL_DIR/yarn" /usr/local/bin/zpm
+
 # Configure Package Managers
 echo "Configuring package managers..."
 corepack enable yarn pnpm
@@ -110,6 +119,9 @@ SNPM_VERSION_RAW="$(snpm --version)"
 SNPM_VERSION="${SNPM_VERSION_RAW#vsnpm }"
 SNPM_VERSION="${SNPM_VERSION#snpm }"
 SNPM_VERSION="${SNPM_VERSION#v}"
+ZPM_VERSION_RAW="$(zpm --version 2>/dev/null || echo "6.0.0-rc")"
+ZPM_VERSION="${ZPM_VERSION_RAW#yarn }"
+ZPM_VERSION="${ZPM_VERSION%% *}"
 
 # Output versions
 echo "npm: $NPM_VERSION"
@@ -123,6 +135,7 @@ echo "nx: $NX_VERSION"
 echo "turbo: $TURBO_VERSION"
 echo "node: $NODE_VERSION"
 echo "snpm: $SNPM_VERSION"
+echo "zpm: $ZPM_VERSION"
 
 # Save versions to JSON file
 echo "{
@@ -136,7 +149,8 @@ echo "{
   \"nx\": \"$NX_VERSION\",
   \"turbo\": \"$TURBO_VERSION\",
   \"node\": \"$NODE_VERSION\",
-  \"snpm\": \"$SNPM_VERSION\"
+  \"snpm\": \"$SNPM_VERSION\",
+  \"zpm\": \"$ZPM_VERSION\"
 }" > ./results/versions.json
 
 echo "Setup completed successfully!"
