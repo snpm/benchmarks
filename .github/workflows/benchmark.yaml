@@ -8,16 +8,13 @@ on:
         default: '["next", "astro", "vue", "svelte", "large"]'
       variations:
         description: 'The benchmark variations to run'
-        default: '["clean", "node_modules", "cache", "cache+node_modules", "cache+lockfile", "cache+lockfile+node_modules",  "lockfile", "lockfile+node_modules"]'
+        default: '["clean", "cache", "cache+lockfile"]'
       binaries:
         description: 'The binaries to run the benchmarks on'
         default: '"npm,snpm,yarn,berry,pnpm,vlt,bun,deno,nx,turbo,node"'
-      warmup:
-        description: 'The number of warmup runs on each benchmark'
-        default: '1'
       runs:
         description: 'The number of runs on each benchmark'
-        default: '5'
+        default: '3'
   schedule:
     - cron: "0 0 * * *"
 
@@ -30,18 +27,19 @@ jobs:
   benchmark:
     name: 'Run Benchmarks'
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 45
     strategy:
+      fail-fast: false
       matrix:
         fixture: ${{ fromJson(inputs.fixtures || '["next", "astro", "vue", "svelte", "large"]') }}
-        variation: ${{ fromJson(inputs.variations || '["clean", "node_modules", "cache", "cache+node_modules", "cache+lockfile", "cache+lockfile+node_modules",  "lockfile", "lockfile+node_modules"]') }}
+        variation: ${{ fromJson(inputs.variations || '["clean", "cache", "cache+lockfile"]') }}
         include:
           - variation: "run"
             fixture: "run"
     env:
       BENCH_INCLUDE: ${{ fromJson(inputs.binaries || '"npm,snpm,yarn,berry,pnpm,vlt,bun,deno,nx,turbo,node"') }}
-      BENCH_WARMUP: ${{ inputs.warmup || '1' }}
-      BENCH_RUNS: ${{ inputs.runs || '5' }}
+      BENCH_WARMUP: '0'
+      BENCH_RUNS: ${{ inputs.runs || '3' }}
     steps:
       - uses: actions/checkout@v4
       - name: Install Node
@@ -108,14 +106,9 @@ jobs:
               "run"
             ];
             const variations = [
+              "clean",
               "cache",
               "cache+lockfile",
-              "cache+node_modules",
-              "cache+lockfile+node_modules",
-              "clean",
-              "lockfile",
-              "lockfile+node_modules",
-              "node_modules",
               "run"
             ];
 

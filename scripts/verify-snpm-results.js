@@ -3,14 +3,9 @@ import path from "path";
 
 const fixtures = ["next", "astro", "vue", "svelte", "large", "run"];
 const variations = [
+  "clean",
   "cache",
   "cache+lockfile",
-  "cache+lockfile+node_modules",
-  "cache+node_modules",
-  "clean",
-  "lockfile",
-  "lockfile+node_modules",
-  "node_modules",
   "run",
 ];
 

@@ -60,14 +60,9 @@ function readResults(file) {
 function generateChartData(option = {}) {
   const fixtures = ["next", "astro", "svelte", "vue", "large", "run"];
   const variations = [
+    "clean",
     "cache",
     "cache+lockfile",
-    "cache+lockfile+node_modules",
-    "cache+node_modules",
-    "clean",
-    "lockfile",
-    "lockfile+node_modules",
-    "node_modules",
     "run",
   ];
   const result = {};
