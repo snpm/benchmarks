@@ -211,16 +211,16 @@ jobs:
       - name: Process Results
         run: |
           bash ./scripts/process-results.sh
-      - name: Install vlt
+      - name: Install snpm
         run: |
-          npm install -g vlt@latest
+          npm install -g snpm@latest
       - name: Build Charts View
         env:
           BENCHMARKS_BASE_URL: "/${{ github.event.repository.name }}/"
         run: |
           pushd app
-          vlt install || true
-          vlt run build
+          snpm install
+          snpm run build
           popd
       - name: Upload Processed Results
         uses: actions/upload-artifact@v4
